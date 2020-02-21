@@ -1,0 +1,12 @@
+<h1>Show</h1>
+
+<div class="container">
+  <div class="d-flex">
+    <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail), method: 'DELETE' do %>
+        <div class="card-category m-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.image_url %>)">
+          <%= cocktail.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
