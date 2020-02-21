@@ -13,11 +13,11 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @cocktail = Cocktail.new(params[:name])
+    @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
-      "Successfully saved!"
+      redirect_to cocktail_path(@cocktail)
     else
-      render "new"
+      render :new
     end
   end
 
@@ -28,9 +28,9 @@ class CocktailsController < ApplicationController
   def update
     @cocktail = Cocktail.find(params[:name])
     if @cocktail.update
-      "Successfully updated!"
+      redirect_to cocktail_path(@cocktail)
     else
-      render "new"
+      render :new
     end
   end
 

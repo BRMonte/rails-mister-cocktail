@@ -16,9 +16,9 @@ class DosesController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @dose = Dose.find(params[:name])
-    @dose.delete
+    @dose.destroy
   end
 
   private
