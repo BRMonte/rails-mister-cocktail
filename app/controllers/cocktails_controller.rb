@@ -5,11 +5,11 @@ class CocktailsController < ApplicationController
   end
 
   def new
-    @cocktail = Cocktail.new(params[:name])
+    @cocktail = Cocktail.new
   end
 
   def show
-    @cocktail = Cocktail.find(params[:name])
+    @cocktail = Cocktail.find(params[:id])
   end
 
   def create
@@ -17,7 +17,7 @@ class CocktailsController < ApplicationController
     if @cocktail.save
       "Successfully saved!"
     else
-      render "new_cocktail"
+      render "new"
     end
   end
 
@@ -30,7 +30,7 @@ class CocktailsController < ApplicationController
     if @cocktail.update
       "Successfully updated!"
     else
-      render "edit_cocktail"
+      render "new"
     end
   end
 

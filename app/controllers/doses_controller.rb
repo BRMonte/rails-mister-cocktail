@@ -1,15 +1,18 @@
 class DosesController < ApplicationController
 
   def new
-    @dose = Dose.new(params[:name])
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose = Dose.new
   end
 
   def create
-    @dose = Dose.new(params[:name])
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose = Dose.new(dose_params)
+    @dose.cocktail = @cocktail
     if @dose.save
-      "Successfully saved!"
+      redirect_to cocktail_path(@cocktail)
     else
-      render "new_dose"
+      render "new"
     end
   end
 
@@ -23,6 +26,6 @@ class DosesController < ApplicationController
   def dose_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:dose).permit(:description)
+    params.require(:dose).permit(:description, :ingredient_id)
   end
 end
