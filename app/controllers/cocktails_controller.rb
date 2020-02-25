@@ -36,7 +36,7 @@ class CocktailsController < ApplicationController
 
   def delete
     @cocktail = Cocktail.find(params[:name])
-    @cocktail.destroy
+    @cocktail.delete
   end
 
   private
